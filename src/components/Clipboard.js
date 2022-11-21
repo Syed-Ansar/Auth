@@ -12,7 +12,7 @@ const ClipboardComp = ({name = 'Syed', email = 'Ansarr'}) => {
   const [copiedText, setCopiedText] = useState('');
 
   const copyToClipboard = () => {
-    Clipboard.setString(name + ' ' + email);
+    Clipboard.setString('Syed Ansar');
   };
 
   const fetchCopiedText = async () => {

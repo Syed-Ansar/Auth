@@ -10,9 +10,9 @@ import {
 import React, {useContext} from 'react';
 import {UserContext} from '../../App';
 import auth from '@react-native-firebase/auth';
-import {useNavigation} from '@react-navigation/native';
 import ClipboardComp from './Clipboard';
 import ShareExample from './Share';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 function Home() {
   const {user, setUser} = useContext(UserContext);
@@ -24,6 +24,16 @@ function Home() {
       .then(() => console.log('User signed out!'));
     setUser(null);
   };
+
+  async function changeScreenOrientation() {
+    await ScreenOrientation.lockAsync(
+      (ScreenOrientation.OrientationLock.ALL = 1),
+    );
+  }
+  async function getScreenOrientation() {
+    const ori = await ScreenOrientation.getOrientationAsync();
+    console.log(ori);
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -43,8 +53,14 @@ function Home() {
           <Text style={[styles.textlg, styles.logout]}>Logout</Text>
         </Pressable>
         <View style={{marginTop: 40}}>
-          <ClipboardComp name={user.user.displayName} email={user.user.email} />
-          <ShareExample name={user.user.displayName} email={user.user.email} />
+          {/* <ClipboardComp name={user.user.displayName} email={user.user.email} />
+          <ShareExample name={user.user.displayName} email={user.user.email} /> */}
+          <Pressable onPress={changeScreenOrientation}>
+            <Text style={[styles.textlg, styles.logout]}>orientation</Text>
+          </Pressable>
+          <Pressable onPress={getScreenOrientation}>
+            <Text style={[styles.textlg, styles.logout]}>Get orientation</Text>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>
@@ -86,12 +102,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logout: {
-    width: '80%',
+    width: '100%',
     backgroundColor: 'white',
     color: 'black',
     textAlign: 'center',
     padding: 10,
     marginTop: 50,
     borderRadius: 15,
+    justifyContent: 'center',
+    marginHorizontal: 20,
+    alignItems: 'center',
   },
 });
