@@ -13,6 +13,14 @@ import auth from '@react-native-firebase/auth';
 import ClipboardComp from './Clipboard';
 import ShareExample from './Share';
 import * as ScreenOrientation from 'expo-screen-orientation';
+import {
+  responsiveScreenWidth,
+  responsiveScreenFontSize,
+  responsiveScreenHeight,
+  responsiveWidth,
+  responsiveFontSize,
+  responsiveHeight,
+} from 'react-native-responsive-dimensions';
 
 function Home() {
   const {user, setUser} = useContext(UserContext);
@@ -52,15 +60,58 @@ function Home() {
         <Pressable style={styles.logoutWrapper} onPress={logout}>
           <Text style={[styles.textlg, styles.logout]}>Logout</Text>
         </Pressable>
-        <View style={{marginTop: 40}}>
+        <View
+          style={{
+            marginTop: responsiveWidth(10),
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
           {/* <ClipboardComp name={user.user.displayName} email={user.user.email} />
           <ShareExample name={user.user.displayName} email={user.user.email} /> */}
+          {/* <Pressable onPress={changeScreenOrientation}>
+            <Text style={[styles.textlg, styles.logout]}>orientation</Text>
+          </Pressable>
+          <Pressable onPress={getScreenOrientation}>
+            <Text style={[styles.textlg, styles.logout]}>Get orientation</Text>
+          </Pressable>
           <Pressable onPress={changeScreenOrientation}>
             <Text style={[styles.textlg, styles.logout]}>orientation</Text>
           </Pressable>
           <Pressable onPress={getScreenOrientation}>
             <Text style={[styles.textlg, styles.logout]}>Get orientation</Text>
           </Pressable>
+          <Pressable onPress={changeScreenOrientation}>
+            <Text style={[styles.textlg, styles.logout]}>orientation</Text>
+          </Pressable>
+          <Pressable onPress={getScreenOrientation}>
+            <Text style={[styles.textlg, styles.logout]}>Get orientation</Text>
+          </Pressable>
+          <Pressable onPress={changeScreenOrientation}>
+            <Text style={[styles.textlg, styles.logout]}>orientation</Text>
+          </Pressable> */}
+          <Text
+            style={{
+              fontSize: responsiveFontSize(1.8),
+              marginLeft: responsiveWidth(5),
+              marginRight: responsiveWidth(5),
+            }}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro
+            temporibus eveniet magni, ea in provident, dolore soluta ut
+            reprehenderit quod at eum asperiores illum molestiae eius rerum
+            eligendi. Necessitatibus, nam! Soluta quis ducimus eum voluptate
+            nemo, quo animi ipsa atque. Neque, ipsum hic ab totam repellendus
+            provident! Quia eaque nisi itaque esse vero similique iure suscipit
+            quos. Accusantium, repudiandae illo? Molestias eaque quia eveniet
+            dele
+          </Text>
+          <Pressable
+            style={{
+              backgroundColor: 'black',
+              // height: responsiveHeight(10),
+              // width: responsiveWidth(80),
+              height: 100,
+              width: 200,
+            }}></Pressable>
         </View>
       </View>
     </SafeAreaView>
@@ -71,46 +122,46 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: 'gray',
   },
   wrapper: {
     alignItems: 'center',
-    marginBottom: 50,
+    marginBottom: responsiveWidth(10),
   },
   image: {
-    height: 45,
-    width: 45,
-    borderRadius: 25,
+    height: responsiveWidth(10),
+    width: responsiveWidth(10),
+    borderRadius: responsiveWidth(10) / 2,
     marginRight: 20,
   },
   userInfo: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 15,
+    paddingHorizontal: responsiveWidth(5),
   },
   info: {},
   textlg: {
-    fontSize: 20,
+    fontSize: responsiveFontSize(2),
+    // fontSize: 14,
     color: 'white',
-    fontWeight: '800',
+    // fontWeight: '800',
   },
   textsm: {
-    fontSize: 15,
+    fontSize: responsiveFontSize(1.5),
     color: 'white',
   },
   logoutWrapper: {
+    width: '100%',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   logout: {
-    width: '100%',
+    width: responsiveWidth(80),
     backgroundColor: 'white',
     color: 'black',
     textAlign: 'center',
-    padding: 10,
-    marginTop: 50,
+    padding: responsiveHeight(1),
+    marginTop: responsiveWidth(10),
     borderRadius: 15,
-    justifyContent: 'center',
-    marginHorizontal: 20,
-    alignItems: 'center',
   },
 });
