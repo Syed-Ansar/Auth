@@ -22,7 +22,7 @@ import {
   responsiveHeight,
 } from 'react-native-responsive-dimensions';
 
-function Home() {
+function Home({navigation}) {
   const {user, setUser} = useContext(UserContext);
   //   console.log(user.user);
 
@@ -111,7 +111,8 @@ function Home() {
               // width: responsiveWidth(80),
               height: 100,
               width: 200,
-            }}></Pressable>
+            }}
+            onPress={() => navigation.navigate('ThreeJS')}></Pressable>
         </View>
       </View>
     </SafeAreaView>
